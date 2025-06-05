@@ -1,0 +1,1 @@
+mri_convert /Users/azuma/PycharmProjects/fmriproj/2/mri/rawavg.mgz /Users/azuma/PycharmProjects/fmriproj/2/mri/orig.mgz --conform

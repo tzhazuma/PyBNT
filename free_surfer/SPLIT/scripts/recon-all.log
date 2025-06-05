@@ -1,0 +1,255 @@
+
+Mon Jan 20 02:04:16 CST 2025
+cd /Users/azuma/PycharmProjects/fmriproj/free_surfer_util/SPLIT
+setenv SUBJECTS_DIR /Users/azuma/PycharmProjects/fmriproj/free_surfer_util
+/Users/azuma/PycharmProjects/fmriproj/free_surfer_util/freesurfer/bin/recon-all -parallel -i ../00000005.nii -s SPLIT -sd /Users/azuma/PycharmProjects/fmriproj/free_surfer_util -cw256 -all
+
+subjid SPLIT
+setenv SUBJECTS_DIR /Users/azuma/PycharmProjects/fmriproj/free_surfer_util
+FREESURFER_HOME /Users/azuma/PycharmProjects/fmriproj/free_surfer_util/freesurfer
+Actual FREESURFER_HOME /Users/azuma/PycharmProjects/fmriproj/free_surfer_util/freesurfer
+build-stamp.txt: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc
+Darwin AzumadeMacBook-Pro.local 24.3.0 Darwin Kernel Version 24.3.0: Tue Dec 17 23:23:26 PST 2024; root:xnu-11215.80.28.501.2~1/RELEASE_X86_64 x86_64
+cputime      unlimited
+filesize     unlimited
+datasize     unlimited
+stacksize    8192 kbytes
+coredumpsize 0 kbytes
+memoryuse    unlimited
+descriptors  12544 
+memorylocked unlimited
+maxproc      2784 
+
+PhysMem: 16G used (4127M wired, 1018M compressor), 41M unused.
+
+########################################
+program versions used
+8.0.0-beta (freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc)
+8.0.0-beta
+
+ProgramName: lta_convert  ProgramArguments: lta_convert -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:19-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mri_and  ProgramArguments: mri_and -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:20-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mri_annotation2label  ProgramArguments: mri_annotation2label -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:20-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mri_aparc2aseg  ProgramArguments: mri_aparc2aseg -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:21-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mri_surf2volseg  ProgramArguments: mri_surf2volseg -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:21-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mri_binarize  ProgramArguments: mri_binarize -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:21-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mri_ca_label  ProgramArguments: mri_ca_label -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:22-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mri_ca_normalize  ProgramArguments: mri_ca_normalize -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:22-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mri_ca_register  ProgramArguments: mri_ca_register -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:23-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mri_cc  ProgramArguments: mri_cc -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:23-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mri_compute_overlap  ProgramArguments: mri_compute_overlap -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:24-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mri_compute_seg_overlap  ProgramArguments: mri_compute_seg_overlap -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:24-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mri_concat  ProgramArguments: mri_concat -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:25-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mri_concatenate_lta  ProgramArguments: mri_concatenate_lta -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:25-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+mri_convert -all-info 
+ProgramName: mri_convert  ProgramArguments: mri_convert -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:25-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mri_diff  ProgramArguments: mri_diff -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:26-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mri_edit_wm_with_aseg  ProgramArguments: mri_edit_wm_with_aseg -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:26-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mri_em_register  ProgramArguments: mri_em_register -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:27-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mri_fill  ProgramArguments: mri_fill -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:27-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mri_fuse_segmentations  ProgramArguments: mri_fuse_segmentations -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:27-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mri_fwhm  ProgramArguments: mri_fwhm -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:28-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mri_gcut  ProgramArguments: mri_gcut -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:28-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mri_info  ProgramArguments: mri_info -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:29-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mri_label2label  ProgramArguments: mri_label2label -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:29-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mri_label2vol  ProgramArguments: mri_label2vol -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:30-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mri_log_likelihood  ProgramArguments: mri_log_likelihood -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:30-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mri_mask  ProgramArguments: mri_mask -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:31-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mri_matrix_multiply  ProgramArguments: mri_matrix_multiply -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:31-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mri_normalize  ProgramArguments: mri_normalize -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:32-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mri_normalize_tp2  ProgramArguments: mri_normalize_tp2 -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:32-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mri_or  ProgramArguments: mri_or -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:33-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mri_relabel_hypointensities  ProgramArguments: mri_relabel_hypointensities -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:33-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mri_relabel_nonwm_hypos  ProgramArguments: mri_relabel_nonwm_hypos -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:34-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mri_remove_neck  ProgramArguments: mri_remove_neck -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:35-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+8.0.0-beta
+
+ProgramName: mri_robust_register  ProgramArguments: mri_robust_register -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:35-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+8.0.0-beta
+
+ProgramName: mri_robust_template  ProgramArguments: mri_robust_template -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:36-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mris_anatomical_stats  ProgramArguments: mris_anatomical_stats -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:36-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mris_ca_label  ProgramArguments: mris_ca_label -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:37-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mris_calc  ProgramArguments: mris_calc -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:38-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+mris_convert -all-info 
+ProgramName: mris_convert  ProgramArguments: mris_convert -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:38-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mris_curvature  ProgramArguments: mris_curvature -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:39-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mris_curvature_stats  ProgramArguments: mris_curvature_stats -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:39-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mris_diff  ProgramArguments: mris_diff -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:40-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mris_divide_parcellation  ProgramArguments: mris_divide_parcellation -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:41-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mri_segment  ProgramArguments: mri_segment -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:42-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mri_segstats  ProgramArguments: mri_segstats -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:42-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mris_euler_number  ProgramArguments: mris_euler_number -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:43-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mris_fix_topology  ProgramArguments: mris_fix_topology -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:43-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mris_topo_fixer  ProgramArguments: mris_topo_fixer -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:44-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mris_jacobian  ProgramArguments: mris_jacobian -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:44-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mris_label2annot  ProgramArguments: mris_label2annot -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:44-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mris_left_right_register  ProgramArguments: mris_left_right_register -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:45-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mris_place_surface  ProgramArguments: mris_place_surface -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:46-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mrisp_paint  ProgramArguments: mrisp_paint -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:46-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mris_register  ProgramArguments: mris_register -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:47-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mris_smooth  ProgramArguments: mris_smooth -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:48-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mris_sphere  ProgramArguments: mris_sphere -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:48-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mris_surface_stats  ProgramArguments: mris_surface_stats -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:49-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mri_stats2seg  ProgramArguments: mri_stats2seg -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:49-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mris_thickness  ProgramArguments: mris_thickness -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:50-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mris_thickness_diff  ProgramArguments: mris_thickness_diff -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:50-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mris_topo_fixer  ProgramArguments: mris_topo_fixer -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:50-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mri_surf2surf  ProgramArguments: mri_surf2surf -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:51-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mri_surf2vol  ProgramArguments: mri_surf2vol -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:51-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mri_surfcluster  ProgramArguments: mri_surfcluster -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:52-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mris_volmask  ProgramArguments: mris_volmask -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:52-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mri_tessellate  ProgramArguments: mri_tessellate -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:53-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mri_vol2surf  ProgramArguments: mri_vol2surf -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:53-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mri_vol2vol  ProgramArguments: mri_vol2vol -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:54-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mri_voldiff  ProgramArguments: mri_voldiff -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:54-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: mri_watershed  ProgramArguments: mri_watershed -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:55-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+ProgramName: tkregister2  ProgramArguments: tkregister2_cmdl -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:55-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+mri_motion_correct.fsl 8.0.0-beta
+mri_convert -all-info 
+ProgramName: mri_convert  ProgramArguments: mri_convert -all-info  ProgramVersion: 8.0.0-beta  TimeStamp: 2025/01/19-18:04:55-GMT  BuildTime: Nov  3 2024 16:32:46  BuildStamp: freesurfer-macOS-darwin_x86_64-8.0.0-beta-20241103-b8aacdc  User: azuma  Machine: AzumadeMacBook-Pro.local  Platform: Darwin  PlatformVersion: 24.3.0  CompilerName: Clang  CompilerVersion: 12.0.0
+#######################################
+GCADIR /Users/azuma/PycharmProjects/fmriproj/free_surfer_util/freesurfer/average
+GCA RB_all_2020-01-02.gca
+GCASkull RB_all_withskull_2020_01_02.gca
+AvgCurvTif folding.atlas.acfb40.noaparc.i12.2016-08-02.tif
+GCSDIR /Users/azuma/PycharmProjects/fmriproj/free_surfer_util/freesurfer/average
+GCS DKaparc.atlas.acfb40.noaparc.i12.2016-08-02.gcs
+#######################################
+-cw256 option is now persistent (remove with -clean-cw256)
+/Users/azuma/PycharmProjects/fmriproj/free_surfer_util/SPLIT
+\n mri_convert /Users/azuma/PycharmProjects/fmriproj/00000005.nii /Users/azuma/PycharmProjects/fmriproj/free_surfer_util/SPLIT/mri/orig/001.mgz \n
+mri_convert /Users/azuma/PycharmProjects/fmriproj/00000005.nii /Users/azuma/PycharmProjects/fmriproj/free_surfer_util/SPLIT/mri/orig/001.mgz 
+INFO: This is an unsigined short.
+INFO: using NIfTI-1 sform (sform_code=2)
+reading from /Users/azuma/PycharmProjects/fmriproj/00000005.nii...
+TR=0.00, TE=0.00, TI=0.00, flip angle=0.00
+i_ras = (1, 0, 0)
+j_ras = (0, 1, 0)
+k_ras = (0, 0, 1)
+writing to /Users/azuma/PycharmProjects/fmriproj/free_surfer_util/SPLIT/mri/orig/001.mgz...
+#--------------------------------------------
+#@# MotionCor Mon Jan 20 02:04:56 CST 2025
+Found 1 runs
+/Users/azuma/PycharmProjects/fmriproj/free_surfer_util/SPLIT/mri/orig/001.mgz
+Checking for (invalid) multi-frame inputs...
+Only one run found so motion
+correction will not be performed. I'll
+copy the run to rawavg and continue.
+\n cp /Users/azuma/PycharmProjects/fmriproj/free_surfer_util/SPLIT/mri/orig/001.mgz /Users/azuma/PycharmProjects/fmriproj/free_surfer_util/SPLIT/mri/rawavg.mgz \n
+\n mri_info /Users/azuma/PycharmProjects/fmriproj/free_surfer_util/SPLIT/mri/rawavg.mgz \n
+rawavg.mgz ========================================
+Volume information for /Users/azuma/PycharmProjects/fmriproj/free_surfer_util/SPLIT/mri/rawavg.mgz
+          type: MGH
+        intent: MRI (0)
+    dimensions: 428 x 448 x 1
+   voxel sizes: 1.000000, 1.000000, 1.000000
+          type: USHRT (10)
+           fov: 448.000
+           dof: 1
+        xstart: -214.0, xend: 214.0
+        ystart: -224.0, yend: 224.0
+        zstart: -0.5, zend: 0.5
+            TR: 0.00 msec, TE: 0.00 msec, TI: 0.00 msec, flip angle: 0.00 degrees
+       nframes: 1
+       PhEncDir: UNKNOWN
+       FieldStrength: 0.000000
+ras xform present
+    xform info: x_r =   1.0000, y_r =   0.0000, z_r =   0.0000, c_r =   214.0000
+              : x_a =   0.0000, y_a =   1.0000, z_a =   0.0000, c_a =   224.0000
+              : x_s =   0.0000, y_s =   0.0000, z_s =   1.0000, c_s =     0.5000
+
+talairach xfm : 
+Orientation   : RAS
+Primary Slice Direction: axial
+
+voxel to ras transform:
+                1.0000   0.0000   0.0000     0.0000
+                0.0000   1.0000   0.0000     0.0000
+                0.0000   0.0000   1.0000     0.0000
+                0.0000   0.0000   0.0000     1.0000
+
+voxel-to-ras determinant 1
+
+ras to voxel transform:
+                1.0000   0.0000   0.0000     0.0000
+                0.0000   1.0000   0.0000     0.0000
+                0.0000   0.0000   1.0000     0.0000
+                0.0000   0.0000   0.0000     1.0000
+/Users/azuma/PycharmProjects/fmriproj/free_surfer_util/SPLIT
+\n mri_convert /Users/azuma/PycharmProjects/fmriproj/free_surfer_util/SPLIT/mri/rawavg.mgz /Users/azuma/PycharmProjects/fmriproj/free_surfer_util/SPLIT/mri/orig.mgz --conform --cw256 \n
+mri_convert /Users/azuma/PycharmProjects/fmriproj/free_surfer_util/SPLIT/mri/rawavg.mgz /Users/azuma/PycharmProjects/fmriproj/free_surfer_util/SPLIT/mri/orig.mgz --conform --cw256 
+reading from /Users/azuma/PycharmProjects/fmriproj/free_surfer_util/SPLIT/mri/rawavg.mgz...
+TR=0.00, TE=0.00, TI=0.00, flip angle=0.00
+i_ras = (1, 0, 0)
+j_ras = (0, 1, 0)
+k_ras = (0, 0, 1)
+volume geometry:
+valid   : 0
+extent  : (256, 256, 256)
+voxel   : ( 1.0000,  1.0000,  1.0000)
+x_(ras) : (-1.0000,  0.0000,  0.0000)
+y_(ras) : ( 0.0000,  0.0000, -1.0000)
+z_(ras) : ( 0.0000,  1.0000,  0.0000)
+c_(ras) : (214.0000, 224.0000,  0.5000)
+file    : /Users/azuma/PycharmProjects/fmriproj/free_surfer_util/SPLIT/mri/rawavg.mgz
+changing data type from ushrt to uchar (noscale = 0)...
+MRIchangeType: Building histogram 0 255 1000, flo=0, fhi=0.999, dest_type=0
+Reslicing using trilinear interpolation 
+writing to /Users/azuma/PycharmProjects/fmriproj/free_surfer_util/SPLIT/mri/orig.mgz...
+\n mri_add_xform_to_header -c /Users/azuma/PycharmProjects/fmriproj/free_surfer_util/SPLIT/mri/transforms/talairach.xfm /Users/azuma/PycharmProjects/fmriproj/free_surfer_util/SPLIT/mri/orig.mgz /Users/azuma/PycharmProjects/fmriproj/free_surfer_util/SPLIT/mri/orig.mgz \n
+INFO: extension is mgz
+\n mri_info /Users/azuma/PycharmProjects/fmriproj/free_surfer_util/SPLIT/mri/orig.mgz \n
+orig.mgz ========================================
+Volume information for /Users/azuma/PycharmProjects/fmriproj/free_surfer_util/SPLIT/mri/orig.mgz
+          type: MGH
+        intent: MRI (0)
+    dimensions: 256 x 256 x 256
+   voxel sizes: 1.000000, 1.000000, 1.000000
+          type: UCHAR (0)
+           fov: 256.000
+           dof: 1
+        xstart: -128.0, xend: 128.0
+        ystart: -128.0, yend: 128.0
+        zstart: -128.0, zend: 128.0
+            TR: 0.00 msec, TE: 0.00 msec, TI: 0.00 msec, flip angle: 0.00 degrees
+       nframes: 1
+       PhEncDir: UNKNOWN
+       FieldStrength: 0.000000
+ras xform present
+    xform info: x_r =  -1.0000, y_r =   0.0000, z_r =   0.0000, c_r =   214.0000
+              : x_a =   0.0000, y_a =   0.0000, z_a =   1.0000, c_a =   224.0000
+              : x_s =   0.0000, y_s =  -1.0000, z_s =   0.0000, c_s =     0.5000
+
+talairach xfm : /Users/azuma/PycharmProjects/fmriproj/free_surfer_util/SPLIT/mri/transforms/talairach.xfm
+Orientation   : LIA
+Primary Slice Direction: coronal
+
+voxel to ras transform:
+               -1.0000   0.0000   0.0000   342.0000
+                0.0000   0.0000   1.0000    96.0000
+                0.0000  -1.0000   0.0000   128.5000
+                0.0000   0.0000   0.0000     1.0000
+
+voxel-to-ras determinant -1
+
+ras to voxel transform:
+               -1.0000  -0.0000  -0.0000   342.0000
+               -0.0000  -0.0000  -1.0000   128.5000
+               -0.0000   1.0000  -0.0000   -96.0000
+               -0.0000  -0.0000  -0.0000     1.0000
+lta_convert --inlta identity.nofile --src /Users/azuma/PycharmProjects/fmriproj/free_surfer_util/SPLIT/mri/rawavg.mgz --trg /Users/azuma/PycharmProjects/fmriproj/free_surfer_util/SPLIT/mri/orig.mgz --outlta /Users/azuma/PycharmProjects/fmriproj/free_surfer_util/SPLIT/mri/rawavg2orig.lta
+8.0.0-beta
+
+--inlta: identity.nofile input LTA transform.
+--src: /Users/azuma/PycharmProjects/fmriproj/free_surfer_util/SPLIT/mri/rawavg.mgz src image (geometry).
+--trg: /Users/azuma/PycharmProjects/fmriproj/free_surfer_util/SPLIT/mri/orig.mgz trg image (geometry).
+--outlta: /Users/azuma/PycharmProjects/fmriproj/free_surfer_util/SPLIT/mri/rawavg2orig.lta output LTA.
+ LTA read, type : 1
+ 1.00000   0.00000   0.00000   0.00000;
+ 0.00000   1.00000   0.00000   0.00000;
+ 0.00000   0.00000   1.00000   0.00000;
+ 0.00000   0.00000   0.00000   1.00000;
+Writing  LTA to file /Users/azuma/PycharmProjects/fmriproj/free_surfer_util/SPLIT/mri/rawavg2orig.lta...
+lta_convert successful.
+\n mri_synthstrip --threads 4 -i /Users/azuma/PycharmProjects/fmriproj/free_surfer_util/SPLIT/mri/orig.mgz -o /Users/azuma/PycharmProjects/fmriproj/free_surfer_util/SPLIT/mri/synthstrip.mgz \n

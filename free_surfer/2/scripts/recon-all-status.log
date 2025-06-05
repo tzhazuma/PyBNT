@@ -1,0 +1,7 @@
+status file for recon-all
+Mon Jan 20 01:59:10 CST 2025
+#@# MotionCor Mon Jan 20 01:59:11 CST 2025
+Darwin AzumadeMacBook-Pro.local 24.3.0 Darwin Kernel Version 24.3.0: Tue Dec 17 23:23:26 PST 2024; root:xnu-11215.80.28.501.2~1/RELEASE_X86_64 x86_64
+
+recon-all -s 2 exited with ERRORS at Mon Jan 20 01:59:22 CST 2025
+

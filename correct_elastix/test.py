@@ -1,0 +1,18 @@
+import nibabel as nib;
+t1=nib.load("sub-024_T1w.nii.gz").get_fdata();
+flair=nib.load("sub-024_flair.nii.gz").get_fdata();
+t1flair=nib.load("sub-024_T1w_corrected.nii.gz").get_fdata();
+t1flair_ref=nib.load("sub-024_t1_to_flair.nii.gz").get_fdata();
+print(t1.shape);
+print(flair.shape);
+print(t1flair.shape);
+print(t1flair_ref.shape);
+import cv2;
+t1=cv2.normalize(t1,None,0,255,cv2.NORM_MINMAX);
+flair=cv2.normalize(flair,None,0,255,cv2.NORM_MINMAX);
+t1flair=cv2.normalize(t1flair,None,0,255,cv2.NORM_MINMAX);
+t1flair_ref=cv2.normalize(t1flair_ref,None,0,255,cv2.NORM_MINMAX);
+cv2.imwrite("t1.png",t1[:,:,int(192*110/240)]);
+cv2.imwrite("flair.png",flair[:,:,110]);
+cv2.imwrite("t1flair.png",t1flair[110,:,:]);
+cv2.imwrite("t1flairref.png",t1flair_ref[:,:,110]);

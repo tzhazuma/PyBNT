@@ -1,0 +1,1 @@
+mri_convert /Users/azuma/PycharmProjects/fmriproj/free_surfer_util/SPLIT/mri/rawavg.mgz /Users/azuma/PycharmProjects/fmriproj/free_surfer_util/SPLIT/mri/orig.mgz --conform --cw256

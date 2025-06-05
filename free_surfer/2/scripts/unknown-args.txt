@@ -1,0 +1,6 @@
+-parallel
+-i
+00000005.nii
+-autorecon1
+-subjid
+2
