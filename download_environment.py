@@ -13,8 +13,12 @@ def download_all():
     download_freesurfer()
     print("Downloading Elastix...")
     download_elastix()
-    print("Installing Python dependencies...")
-    subprocess.check_call(
-        [sys.executable, "-m", "pip", "install", "-r", "requirements.txt"]
-    )
+    req_file = "requirements.txt"
+    if os.path.exists(req_file):
+        print(f"Installing Python dependencies from {req_file}...")
+        subprocess.check_call(
+            [sys.executable, "-m", "pip", "install", "-r", req_file]
+        )
+    else:
+        print(f"{req_file} not found, skipping dependency installation.")
     print("All downloads complete!")

@@ -92,11 +92,23 @@ def ask_llm_dashscope(
         return None
 
     dashscope.api_key = api_key
-    response = dashscope.Generation.call(
-        model=model,
-        messages=message,
-        result_format="message",
-    )
+    kwargs = {
+        "model": model,
+        "messages": message,
+        "result_format": "message",
+    }
+    if stream:
+        kwargs["stream"] = True
+        response = dashscope.Generation.call(**kwargs)
+        result = ""
+        for chunk in response:
+            if hasattr(chunk, "output") and chunk.output and hasattr(chunk.output, "text"):
+                part = chunk.output.text
+                result += part
+                print(part, end="", flush=True)
+        print()
+        return result
+    response = dashscope.Generation.call(**kwargs)
     if response.status_code == HTTPStatus.OK:
         return response.output.text if hasattr(response, "output") else str(response)
     else:
