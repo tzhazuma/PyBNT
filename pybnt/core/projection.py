@@ -122,7 +122,7 @@ class Triangle:
     def vecang(self, v1: np.ndarray, v2: np.ndarray) -> float:
         """Compute the angle (in radians) between two vectors."""
         denom = self.veclen(v1) * self.veclen(v2)
-        s = v1.dot(v2) / denom
+        s = max(-1.0, min(1.0, v1.dot(v2) / denom))
         return float(acos(s))
 
     def pos_in(self, p: Pos) -> bool:
@@ -135,7 +135,7 @@ class Triangle:
         s = self.vecang(l1, l2)
         s1 = self.vecang(l1, d)
         s2 = self.vecang(l2, d)
-        if s != s1 + s2:
+        if abs(s - (s1 + s2)) > 1e-10:
             return False
 
         l1 = n3 - n2
@@ -144,7 +144,7 @@ class Triangle:
         s = self.vecang(l1, l2)
         s1 = self.vecang(l1, d)
         s2 = self.vecang(l2, d)
-        if s != s1 + s2:
+        if abs(s - (s1 + s2)) > 1e-10:
             return False
 
         return True

@@ -148,23 +148,27 @@ class TestTriangle:
         assert abs(mn[2] - 6.0) < 0.001
 
     def test_pos_in_inside(self):
-        """Test pos_in for a vertex (vertex should be on the triangle edge).
-
-        Note: pos_in uses exact floating-point comparison on acos results,
-        which is fragile. A vertex is the most reliable test point.
-        """
+        """Test pos_in returns True for a vertex on the triangle."""
         tri = Triangle(
             nodes=((0.0, 0.0, 0.0), (2.0, 0.0, 0.0), (0.0, 2.0, 0.0)),
             nodesindex=(0, 1, 2),
         )
-        if not tri.pos_in((0.0, 0.0, 0.0)):
-            pytest.xfail(
-                "pos_in relies on exact floating-point comparison of acos results"
-            )
-        assert tri.pos_in((0.0, 0.0, 0.0))
+        assert tri.pos_in((0.0, 0.0, 0.0)), (
+            "Vertex (0,0,0) should be on the triangle edge"
+        )
 
-    def test_pos_in_outside(self):
-        """Test pos_in returns False for a point outside the triangle."""
+    def test_pos_in_interior_point(self):
+        """Test pos_in returns True for an interior point (centroid)."""
+        tri = Triangle(
+            nodes=((0.0, 0.0, 0.0), (2.0, 0.0, 0.0), (0.0, 2.0, 0.0)),
+            nodesindex=(0, 1, 2),
+        )
+        assert tri.pos_in((0.5, 0.5, 0.0)), (
+            "Centroid (0.5, 0.5) should be inside the triangle"
+        )
+
+    def test_pos_in_outside_point(self):
+        """Test pos_in returns False for a point clearly outside the triangle."""
         tri = Triangle(
             nodes=((0.0, 0.0, 0.0), (2.0, 0.0, 0.0), (0.0, 2.0, 0.0)),
             nodesindex=(0, 1, 2),

@@ -41,19 +41,22 @@ def split_freesurfer(input_path: str, input_name: str, output_path: str):
             "FREESURFER_HOME", os.path.join(os.getcwd(), "freesurfer")
         )
 
-    setup_cmd = f"source {freesurfer_home}/SetUpFreeSurfer.sh"
-    cmd_str = (
-        f"{setup_cmd} ; "
-        f"export SUBJECTS_DIR={input_path} ; "
-        f"export FS_ALLOW_DEEP=1 ; "
-        f"recon-all -parallel -i {input_name} -s SPLIT -sd {output_path} -cw256 -all"
-    )
-    os.system(cmd_str)
+    setup_sh = os.path.join(freesurfer_home, "SetUpFreeSurfer.sh")
+    env = os.environ.copy()
+    env["SUBJECTS_DIR"] = input_path
+    env["FS_ALLOW_DEEP"] = "1"
+    cmd = [
+        "bash", "-c",
+        f"source {setup_sh} && recon-all -parallel "
+        f"-i {input_name} -s SPLIT -sd {output_path} -cw256 -all"
+    ]
+    result = subprocess.run(cmd, env=env, capture_output=True, text=True)
+    if result.returncode != 0:
+        logger.warning(f"FreeSurfer split failed: {result.stderr}")
 
 
 def download_freesurfer(target_dir: str = ".") -> str:
     """Download FreeSurfer if not already present."""
-    import wget
 
     freesurfer_dir = os.path.join(target_dir, "freesurfer")
     if os.path.exists(freesurfer_dir):
@@ -78,8 +81,29 @@ def download_freesurfer(target_dir: str = ".") -> str:
         return freesurfer_dir
 
     tar_path = os.path.join(target_dir, "freesurfer.tar.gz")
-    wget.download(url, tar_path)
-    os.system(f"tar -xvzf {tar_path} -C {target_dir}")
+    try:
+        subprocess.run(
+            ["wget", "--timeout=300", "-O", tar_path, url],
+            check=True, capture_output=True
+        )
+    except FileNotFoundError:
+        raise RuntimeError(
+            "wget is not installed. Install it with: apt-get install wget (Linux) "
+            "or brew install wget (macOS)"
+        )
+    except subprocess.CalledProcessError as e:
+        raise RuntimeError(
+            f"Failed to download FreeSurfer: {e.stderr.decode() if e.stderr else str(e)}"
+        )
+    try:
+        subprocess.run(
+            ["tar", "-xvzf", tar_path, "-C", target_dir],
+            check=True, capture_output=True
+        )
+    except subprocess.CalledProcessError as e:
+        raise RuntimeError(
+            f"Failed to extract FreeSurfer: {e.stderr.decode() if e.stderr else str(e)}"
+        )
     os.environ["FREESURFER_HOME"] = freesurfer_dir
 
     return freesurfer_dir

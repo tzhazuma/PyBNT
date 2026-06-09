@@ -1,6 +1,6 @@
 [build-system]
 requires = ["setuptools>=68.0"]
-build-backend = "setuptools.backends._legacy:_Backend"
+build-backend = "setuptools.build_meta:__legacy__"
 
 [project]
 name = "pybnt"
@@ -43,9 +43,12 @@ dependencies = [
     "click>=8.1.0",
     "rich>=13.9.4",
     "textual>=1.0.0",
+    "openai>=1.68.0",
     "requests>=2.32.3",
     "dashscope>=1.22.1",
     "pymeshlab>=2023.12",
+    "lancedb>=0.16",
+    "fastembed>=0.4",
 ]
 
 [project.optional-dependencies]
@@ -53,6 +56,9 @@ ai = [
     "torch>=2.4.0",
     "tensorflow>=2.18.0",
     "transformers>=4.48.1",
+    "brainseg-containers>=1.0",
+    "brainles-hd-bet>=2.0",
+    "onnxruntime>=1.18.0",
 ]
 external = [
     "pyelastix>=1.2",

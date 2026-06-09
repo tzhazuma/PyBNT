@@ -147,17 +147,66 @@ def correct(image_path, output):
 
 @ai.command()
 @click.option("--message", "-m", required=True, help="Question to ask")
-@click.option("--api-key", "-k", help="API key (or set DASHSCOPE_API_KEY)")
-@click.option("--model", default="qwen-plus", help="LLM model name")
-def ask(message, api_key, model):
-    """Ask an AI assistant about brain science."""
+@click.option("--api-key", "-k", help="API key")
+@click.option("--model", default="mimo-v2.5", help="Model name")
+@click.option("--provider", default="opencodego",
+              type=click.Choice(["opencodego", "dashscope"]),
+              help="LLM provider")
+@click.option("--stream", is_flag=True, help="Stream response")
+def ask(message, api_key, model, provider, stream):
+    """Ask an AI assistant about brain science (OpenCodeGo default)."""
     from pybnt.ai.llm import ask_llm
     msgs = [{"role": "user", "content": message}]
-    response = ask_llm(msgs, api_key=api_key or "", model=model)
+    response = ask_llm(msgs, api_key=api_key or "", model=model,
+                        provider=provider, stream=stream)
     if response:
         click.echo(response)
     else:
         click.echo("Failed to get response. Check API key.", err=True)
+
+
+@ai.command()
+@click.argument("query")
+@click.option("--k", default=5, type=int, help="Number of results")
+def rag_query(query, k):
+    """Query the brain science knowledge base (RAG)."""
+    from pybnt.ai.rag import query_knowledge
+    results = query_knowledge(query, k=k)
+    if not results:
+        click.echo("No results found. Run 'pybnt ai rag-index' first.")
+        return
+    for r in results:
+        click.echo(f"[{r['category']}] (score: {r['score']:.3f})")
+        click.echo(f"  {r['text'][:200]}...")
+        click.echo("")
+
+
+@ai.command()
+def rag_index():
+    """Build/reindex the brain science knowledge base."""
+    from pybnt.ai.rag import build_knowledge_base
+    count = build_knowledge_base()
+    click.echo(f"Indexed {count} knowledge documents.")
+
+
+@ai.command()
+@click.argument("image_path", type=click.Path(exists=True))
+@click.option("--embedding-only", is_flag=True, help="Only extract embeddings")
+@click.option("--save-embedding", type=click.Path(), help="Save embeddings to .npy")
+def analyze_image(image_path, embedding_only, save_embedding):
+    """Analyze a brain image using AI (VLM)."""
+    from pybnt.ai.vlm import describe_brain_image, extract_embeddings_to_file
+
+    if save_embedding:
+        path = extract_embeddings_to_file(image_path, save_embedding)
+        click.echo(f"Embedding saved: {path}")
+
+    if not embedding_only:
+        description = describe_brain_image(image_path)
+        if description:
+            click.echo(f"Image Analysis:\n{description}")
+        else:
+            click.echo("Could not generate description. Install openai package.")
 
 
 @cli.command()

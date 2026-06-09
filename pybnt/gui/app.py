@@ -6,7 +6,7 @@ from PyQt6.QtWidgets import (
     QPushButton, QLabel, QLineEdit, QFileDialog, QMessageBox,
     QGroupBox, QCheckBox, QGridLayout, QProgressBar, QStatusBar,
     QMenuBar, QToolBar, QMenu, QTextEdit, QFrame, QSplitter,
-    QInputDialog
+    QInputDialog, QDialog
 )
 from PyQt6.QtCore import Qt, QThread, pyqtSignal, QTimer
 from PyQt6.QtGui import QAction, QIcon, QFont
@@ -148,6 +148,16 @@ class Ui_MainWindow(QMainWindow):
         ask_action.setShortcut("Ctrl+A")
         ask_action.triggered.connect(self._ask_ai)
         ai_menu.addAction(ask_action)
+
+        ai_menu.addSeparator()
+
+        rag_action = QAction("RAG Query...", self)
+        rag_action.triggered.connect(self._rag_query)
+        ai_menu.addAction(rag_action)
+
+        analyze_action = QAction("Analyze Image...", self)
+        analyze_action.triggered.connect(self._analyze_image)
+        ai_menu.addAction(analyze_action)
 
         # ---- Help menu ------------------------------------------------
         help_menu = menubar.addMenu("&Help")
@@ -517,23 +527,89 @@ class Ui_MainWindow(QMainWindow):
         self._run_processing()
 
     def _ask_ai(self):
-        """Open AI assistant dialog."""
-        question, ok = QInputDialog.getText(
-            self, "AI Assistant", "Ask about brain imaging:"
-        )
-        if ok and question:
-            from pybnt.ai.llm import ask_llm
+        """Open AI assistant dialog with provider/model selection."""
+        from pybnt.gui.dialogs.ai_settings import AISettingsDialog
 
-            response = ask_llm([{"role": "user", "content": question}])
-            if response:
-                QMessageBox.information(
-                    self, "AI Response", str(response)
-                )
-            else:
-                QMessageBox.warning(
-                    self, "Error",
-                    "Failed to get AI response. Check API key.",
-                )
+        dialog = AISettingsDialog(
+            self, title="Ask AI Assistant",
+            prompt_label="Your question about brain science:",
+        )
+        if dialog.exec() != QDialog.DialogCode.Accepted:
+            return
+
+        question = dialog.question
+        if not question:
+            return
+
+        self.log(f"Asking {dialog.provider}/{dialog.model} ...")
+        from pybnt.ai.llm import ask_llm
+
+        response = ask_llm(
+            [{"role": "user", "content": question}],
+            api_key=dialog.api_key,
+            model=dialog.model,
+            provider=dialog.provider,
+        )
+        if response:
+            QMessageBox.information(self, "AI Response", str(response))
+        else:
+            QMessageBox.warning(
+                self, "Error",
+                "Failed to get AI response. Check API key.",
+            )
+
+    def _rag_query(self):
+        """Query the brain science knowledge base (RAG)."""
+        query, ok = QInputDialog.getText(
+            self, "RAG Query", "Enter your search query:"
+        )
+        if not ok or not query:
+            return
+
+        self.log(f"Querying RAG: {query}")
+        from pybnt.ai.rag import query_knowledge
+
+        results = query_knowledge(query, k=5)
+        if not results:
+            QMessageBox.information(
+                self, "RAG Results",
+                "No results found. Run 'pybnt ai rag-index' first.",
+            )
+            return
+
+        lines = []
+        for r in results:
+            lines.append(f"[{r['category']}] (score: {r['score']:.3f})")
+            lines.append(f"  {r['text'][:300]}")
+            lines.append("")
+
+        msg = QMessageBox(self)
+        msg.setWindowTitle("RAG Results")
+        msg.setIcon(QMessageBox.Icon.Information)
+        msg.setText(f"Found {len(results)} matching documents")
+        msg.setDetailedText("\n".join(lines))
+        msg.exec()
+
+    def _analyze_image(self):
+        """Analyze a brain image using VLM."""
+        path, _ = QFileDialog.getOpenFileName(
+            self, "Select Brain Image", "",
+            "Images (*.png *.jpg *.jpeg *.nii *.nii.gz);;All files (*)",
+        )
+        if not path:
+            return
+
+        self.log(f"Analyzing image: {path}")
+        from pybnt.ai.vlm import describe_brain_image
+
+        description = describe_brain_image(path)
+        if description:
+            QMessageBox.information(self, "Image Analysis", description)
+        else:
+            QMessageBox.warning(
+                self, "Error",
+                "Could not generate description. Install openai package.",
+            )
 
     def _save_screenshot(self):
         """Save current visualization as image."""
