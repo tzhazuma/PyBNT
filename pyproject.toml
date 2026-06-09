@@ -1,0 +1,80 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "pybnt"
+version = "0.2.0"
+description = "PyBrainViewer - AI-Powered Multi-Function Brain Visual Tool"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "Tang Zhihao", email = "tzhazuma@shanghaitech.edu.cn"},
+]
+requires-python = ">=3.10"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Medical Science Apps.",
+    "Topic :: Scientific/Engineering :: Visualization",
+]
+dependencies = [
+    "numpy<2.2.0",
+    "pyvista>=0.44.2",
+    "PyQt6>=6.8.0",
+    "opencv-python>=4.11.0",
+    "nilearn>=0.11.1",
+    "nibabel>=5.3.2",
+    "scipy>=1.15.1",
+    "scikit-image>=0.25.0",
+    "scikit-learn>=1.6.1",
+    "matplotlib>=3.10.0",
+    "pydicom>=3.0.1",
+    "tqdm>=4.67.1",
+    "pillow>=11.1.0",
+    "numba>=0.61.0",
+    "dicom2nifti>=2.5.1",
+    "networkx>=3.4.2",
+    "click>=8.1.0",
+    "rich>=13.9.4",
+    "textual>=1.0.0",
+    "requests>=2.32.3",
+    "dashscope>=1.22.1",
+    "pymeshlab>=2023.12",
+]
+
+[project.optional-dependencies]
+ai = [
+    "torch>=2.4.0",
+    "tensorflow>=2.18.0",
+    "transformers>=4.48.1",
+]
+external = [
+    "pyelastix>=1.2",
+    "spm12>=2.2.0",
+]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+    "black>=24.0",
+    "ruff>=0.3.0",
+]
+
+[project.scripts]
+pybnt = "pybnt.cli.main:cli"
+pybnt-gui = "pybnt.gui.app:main"
+
+[project.urls]
+Homepage = "https://github.com/tzhazuma/PyBNT"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["pybnt*"]
+
+[tool.setuptools.package-data]
+"pybnt" = ["data/templates/**/*", "data/templates/*"]

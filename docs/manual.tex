@@ -1,0 +1,512 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{enumitem}
+
+% Page geometry
+\geometry{margin=2.5cm}
+
+% Code listing style
+\lstset{
+    language=Python,
+    basicstyle=\small\ttfamily,
+    backgroundcolor=\color{gray!10},
+    frame=single,
+    breaklines=true,
+    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+    commentstyle=\color{green!50!black},
+    keywordstyle=\color{blue},
+    stringstyle=\color{purple},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+}
+
+% Title formatting
+\titleformat{\section}{\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
+
+% Header/Footer
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{PyBrainViewer User Manual}
+\rhead{Version 0.2.0}
+\cfoot{\thepage}
+
+\title{\textbf{PyBrainViewer User Manual}\\[0.5cm]
+\large AI-Powered Multi-Function Brain Visual Tool\\[0.3cm]
+\small Version 0.2.0}
+\author{Tang Zhihao\\ShanghaiTech University}
+\date{2025}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+\newpage
+
+\tableofcontents
+\newpage
+
+% Chapter 1: Introduction
+\section{Introduction}
+
+PyBrainViewer is a modern, cross-platform Python tool for brain imaging data analysis and 3D visualization. It serves as a comprehensive replacement for the MATLAB-based BrainNet Viewer, adding modern features while maintaining full compatibility with existing file formats.
+
+\subsection{Background}
+
+Functional Magnetic Resonance Imaging (fMRI) is a powerful tool for studying brain activity. The Blood Oxygen Level Dependent (BOLD) effect allows researchers to measure neural activity by detecting changes in blood flow. However, raw fMRI data requires significant processing and visualization to be useful for research.
+
+Existing tools like BrainNet Viewer (MATLAB-based, last updated 2019) have served the neuroscience community well but suffer from several limitations:
+\begin{itemize}
+    \item Requires expensive MATLAB license
+    \item Outdated user interface
+    \item Single-function focus (visualization only)
+    \item Limited to Windows platform
+    \item Poor code quality (5000+ lines in single file)
+\end{itemize}
+
+PyBrainViewer addresses these limitations with a modern Python implementation.
+
+\subsection{Features}
+
+\begin{itemize}
+    \item \textbf{Three Interfaces}: CLI (Click), TUI (Textual), GUI (PyQt6)
+    \item \textbf{3D Brain Visualization}: Surface, node, and edge rendering
+    \item \textbf{Volume-to-Surface Mapping}: 7 algorithms
+    \item \textbf{Image Processing}: DICOM/NIfTI conversion, normalization, quality metrics
+    \item \textbf{Connectivity Analysis}: fMRI correlation matrices
+    \item \textbf{AI Features}: Super-resolution, brain segmentation, LLM assistant
+    \item \textbf{External Tool Integration}: FreeSurfer, SPM, Elastix
+    \item \textbf{BNV Compatibility}: Full .nv, .node, .edge format support
+    \item \textbf{Cross-Platform}: Windows, macOS, Linux
+\end{itemize}
+
+% Chapter 2: Installation
+\section{Installation}
+
+\subsection{System Requirements}
+
+\begin{itemize}
+    \item Python 3.10 or higher
+    \item 4GB RAM (8GB recommended for large datasets)
+    \item OpenGL 3.0+ compatible graphics card
+    \item For AI features: NVIDIA GPU with CUDA (optional)
+\end{itemize}
+
+\subsection{Install from Source}
+
+\begin{lstlisting}[caption=Installation from source]
+git clone https://github.com/tzhazuma/PyBNT.git
+cd PyBNT
+pip install -e .
+\end{lstlisting}
+
+\subsection{Install from PyPI}
+
+\begin{lstlisting}[caption=Installation via pip]
+pip install pybnt
+\end{lstlisting}
+
+\subsection{Optional Dependencies}
+
+\begin{lstlisting}[caption=Installing optional dependencies]
+# AI features (PyTorch, TensorFlow)
+pip install pybnt[ai]
+
+# External tool integration
+pip install pybnt[external]
+
+# Development tools
+pip install pybnt[dev]
+\end{lstlisting}
+
+% Chapter 3: Quick Start
+\section{Quick Start}
+
+\subsection{CLI Mode}
+
+The quickest way to get started is the CLI:
+
+\begin{lstlisting}[caption=Basic CLI usage]
+# View help
+pybnt --help
+
+# Visualize a brain surface
+pybnt visualize surface pybnt/data/templates/BrainMesh_ICBM152.nv
+
+# Compute connectivity matrix
+pybnt process compute-connectivity fmri_4d.nii --output matrix.edge
+\end{lstlisting}
+
+\subsection{GUI Mode}
+
+Launch the graphical interface:
+
+\begin{lstlisting}[caption=Launching GUI]
+pybnt-gui
+\end{lstlisting}
+
+Or alternatively:
+\begin{lstlisting}
+python -m pybnt
+\end{lstlisting}
+
+\subsection{TUI Mode}
+
+Launch the terminal interface:
+
+\begin{lstlisting}[caption=Launching TUI]
+pybnt tui
+\end{lstlisting}
+
+\subsection{Python API}
+
+\begin{lstlisting}[caption=Python API usage]
+import pybnt
+
+# Parse a surface file
+nodes, tris = pybnt.core.surface.parse_surface(
+    "pybnt/data/templates/BrainMesh_ICBM152.nv"
+)
+print(f"Loaded {len(nodes)} vertices and {len(tris)} triangles")
+\end{lstlisting}
+
+% Chapter 4: File Formats
+\section{File Formats}
+
+\subsection{Surface Format (.nv)}
+
+The \texttt{.nv} format is BrainNet Viewer's native mesh format, consisting of:
+\begin{itemize}
+    \item Line 1: Number of vertices
+    \item Vertex lines: $x$ $y$ $z$ coordinates
+    \item Next line: Number of triangles
+    \item Triangle lines: $i_1$ $i_2$ $i_3$ (1-indexed indices)
+\end{itemize}
+
+\subsection{Node Format (.node)}
+
+Six-column tab-delimited format:
+\begin{itemize}
+    \item Columns 1-3: $x$, $y$, $z$ coordinates (MNI space)
+    \item Column 4: Color index or continuous value
+    \item Column 5: Node size
+    \item Column 6: Node label (or '-' for no label)
+\end{itemize}
+
+\subsection{Edge Format (.edge)}
+
+N×N adjacency or correlation matrix in space/tab-delimited ASCII format. Supports binary, weighted, directed, or undirected matrices.
+
+\subsection{Volume Formats}
+
+NIfTI (\texttt{.nii}), compressed NIfTI (\texttt{.nii.gz}), DICOM (\texttt{.dcm}), and text-based volumes are supported for volume-to-surface mapping.
+
+% Chapter 5: CLI Reference
+\section{CLI Reference}
+
+\subsection{Visualize Commands}
+
+\subsubsection{Surface Visualization}
+
+\begin{lstlisting}[caption=pybnt visualize surface]
+pybnt visualize surface [OPTIONS] SURFACE_PATH
+
+Options:
+  --smooth       Smooth the surface mesh
+  --light TEXT   Lighting preset (default/head/tail/left/right/none)
+  --colormap TEXT  Surface colormap (default: white)
+  --opacity FLOAT  Surface opacity (0-1)
+  --output, -o PATH  Save screenshot to file
+\end{lstlisting}
+
+\subsubsection{Node Visualization}
+
+\begin{lstlisting}[caption=pybnt visualize nodes]
+pybnt visualize nodes [OPTIONS] NODE_PATH
+
+Options:
+  -e, --edge-path PATH     Edge file (.edge)
+  -s, --surface-path PATH  Surface file (.nv)
+  --node-color TEXT        Node color (default: red)
+  --edge-color TEXT        Edge color (default: blue)
+  --surface-color TEXT     Surface color (default: white)
+  --node-scale FLOAT       Node scaling factor
+  --output, -o PATH        Save screenshot
+\end{lstlisting}
+
+\subsection{Process Commands}
+
+\subsubsection{Connectivity Analysis}
+
+\begin{lstlisting}[caption=pybnt process compute-connectivity]
+pybnt process compute-connectivity [OPTIONS] IMAGE_PATH
+
+Options:
+  --output, -o PATH  Output path for connectivity matrix
+  --method TEXT      Connectivity method (default: correlation)
+\end{lstlisting}
+
+\subsubsection{Image Registration}
+
+\begin{lstlisting}[caption=pybnt process register]
+pybnt process register [OPTIONS] FIXED_IMAGE MOVING_IMAGE
+
+Options:
+  -o, --output-dir PATH  Output directory (default: ./registration_output)
+\end{lstlisting}
+
+\subsection{AI Commands}
+
+\begin{lstlisting}[caption=pybnt ai commands]
+# Brain segmentation
+pybnt ai segment [OPTIONS] IMAGE_PATH
+  -o, --output PATH  Output directory
+
+# Image correction
+pybnt ai correct [OPTIONS] IMAGE_PATH
+  -o, --output PATH  Output directory
+
+# AI assistant
+pybnt ai ask [OPTIONS]
+  -m, --message TEXT  Question to ask (required)
+  -k, --api-key TEXT  API key
+  --model TEXT        LLM model name (default: qwen-plus)
+\end{lstlisting}
+
+% Chapter 6: GUI Reference
+\section{GUI Reference}
+
+\subsection{Main Window}
+
+The GUI consists of:
+\begin{itemize}
+    \item \textbf{Menu Bar}: File, Process, View, AI, Help
+    \item \textbf{Toolbar}: Quick access to common actions
+    \item \textbf{Input Panel}: File path fields with browse buttons
+    \item \textbf{Processing Panel}: Checkboxes for processing options
+    \item \textbf{Log Panel}: Processing status and messages
+    \item \textbf{Status Bar}: Current application state
+\end{itemize}
+
+\subsection{Menu Bar}
+
+\subsubsection{File Menu}
+\begin{itemize}
+    \item Open Surface (.nv) -- Ctrl+O
+    \item Open Node (.node) -- Ctrl+N
+    \item Open Edge (.edge) -- Ctrl+E
+    \item Open Image (NIfTI/DICOM) -- Ctrl+I
+    \item Save Screenshot -- Ctrl+S
+    \item Exit -- Ctrl+Q
+\end{itemize}
+
+\subsubsection{View Menu}
+\begin{itemize}
+    \item Layout options (Lateral, Medial, Ventral, etc.)
+    \item Toggle Dark Mode -- Ctrl+D
+\end{itemize}
+
+\subsubsection{AI Menu}
+\begin{itemize}
+    \item Brain Segmentation
+    \item Denoise Image
+    \item Ask AI Assistant -- Ctrl+A
+\end{itemize}
+
+\subsubsection{Process Menu}
+\begin{itemize}
+    \item Compute Connectivity
+    \item Register Images
+    \item Super-Resolution
+\end{itemize}
+
+% Chapter 7: Python API Reference
+\section{Python API Reference}
+
+\subsection{Core Module}
+
+\subsubsection{Surface Parsing}
+
+\begin{lstlisting}[caption=pybnt.core.surface]
+from pybnt.core.surface import parse_surface
+
+nodes, tris = parse_surface("BrainMesh_ICBM152.nv")
+# nodes: list of [x, y, z] coordinates
+# tris: list of [i1, i2, i3] triangle indices
+\end{lstlisting}
+
+\subsubsection{Node Parsing}
+
+\begin{lstlisting}[caption=pybnt.core.nodes]
+from pybnt.core.nodes import parse_node_file
+
+nodes = parse_node_file("Node_AAL90.node")
+# Each node: {"x": float, "y": float, "z": float,
+#             "value": float, "size": float, "label": str}
+\end{lstlisting}
+
+\subsubsection{Edge Parsing}
+
+\begin{lstlisting}[caption=pybnt.core.edges]
+from pybnt.core.edges import parse_edge_file
+
+matrix = parse_edge_file("Edge_AAL90.edge")
+# Returns numpy array of shape (N, N)
+\end{lstlisting}
+
+\subsubsection{Volume-to-Surface Mapping}
+
+\begin{lstlisting}[caption=pybnt.core.volume]
+from pybnt.core.volume import map_volume_to_surface
+
+vertex_data = map_volume_to_surface(
+    "stat_map.nii",
+    "BrainMesh_ICBM152.nv",
+    algorithm="gaussian",
+    radius=5.0
+)
+# Returns numpy array of shape (num_vertices,)
+\end{lstlisting}
+
+\subsection{Visualization Module}
+
+\begin{lstlisting}[caption=pybnt.visualization]
+from pybnt.visualization.plotter import draw_surface, draw_nodes
+from pybnt.visualization.colormaps import BUILTIN_COLORMAPS
+from pybnt.visualization.layouts import CAMERA_PRESETS
+
+# Draw surface
+plotter = draw_surface("BrainMesh_ICBM152.nv", show=True)
+
+# Draw nodes with edges and surface
+plotter = draw_nodes(
+    "Node_AAL90.node",
+    edge_path="Edge_AAL90.edge",
+    surface_path="BrainMesh_ICBM152.nv"
+)
+\end{lstlisting}
+
+\subsection{Processing Module}
+
+\begin{lstlisting}[caption=pybnt.processing]
+from pybnt.processing.connectivity import compute_correlation_matrix
+from pybnt.processing.registration import register_image
+
+# Compute connectivity
+matrix = compute_correlation_matrix("fMRI_4D.nii")
+
+# Register images
+result = register_image("fixed.nii", "moving.nii", "./output")
+\end{lstlisting}
+
+\subsection{AI Module}
+
+\begin{lstlisting}[caption=pybnt.ai]
+from pybnt.ai.llm import ask_llm
+from pybnt.ai.segmentation import segment_brain
+
+# Ask brain science question
+response = ask_llm([
+    {"role": "user", "content": "What is the default mode network?"}
+], api_key="your-api-key")
+
+# Segment brain
+result = segment_brain("brain.nii", "./segmentation_output")
+\end{lstlisting}
+
+% Chapter 8: BNV Compatibility
+\section{BNV Compatibility}
+
+PyBrainViewer is designed as a drop-in replacement for BrainNet Viewer (BNV). All BNV file formats are supported:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lll}
+\toprule
+\textbf{Format} & \textbf{Extension} & \textbf{BNV Compatible} \\
+\midrule
+Surface & .nv & Full \\
+FreeSurfer surface & .pial & Full \\
+GIFTI surface & .gii & Full \\
+Wavefront OBJ & .obj & Full \\
+Node file & .node & Full \\
+Edge file & .edge & Full \\
+NIfTI volume & .nii & Full \\
+\bottomrule
+\end{tabular}
+\caption{File format compatibility with BrainNet Viewer}
+\end{table}
+
+% Chapter 9: Troubleshooting
+\section{Troubleshooting}
+
+\subsection{Common Issues}
+
+\begin{enumerate}
+    \item \textbf{Missing Dependencies}: Run \texttt{pip install -r requirements.txt}
+    \item \textbf{OpenGL Errors}: Ensure your graphics driver supports OpenGL 3.0+
+    \item \textbf{FreeSurfer Not Found}: Install FreeSurfer or use \texttt{FREESURFER\_HOME} environment variable
+    \item \textbf{Qt Platform Plugin Error}: Install \texttt{libxcb-cursor0} on Linux
+    \item \textbf{AI Model Not Loading}: Ensure model weights are downloaded
+\end{enumerate}
+
+\subsection{Getting Help}
+
+\begin{itemize}
+    \item GitHub Issues: \url{https://github.com/tzhazuma/PyBNT/issues}
+    \item Documentation: \url{https://github.com/tzhazuma/PyBNT}
+\end{itemize}
+
+% Chapter 10: Appendix
+\section{Appendix}
+
+\subsection{Keyboard Shortcuts}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ll}
+\toprule
+\textbf{Shortcut} & \textbf{Action} \\
+\midrule
+Ctrl+O & Open surface file \\
+Ctrl+N & Open node file \\
+Ctrl+E & Open edge file \\
+Ctrl+I & Open image file \\
+Ctrl+S & Save screenshot \\
+Ctrl+D & Toggle dark mode \\
+Ctrl+Q & Exit \\
+Ctrl+A & Ask AI assistant \\
+\bottomrule
+\end{tabular}
+\caption{GUI keyboard shortcuts}
+\end{table}
+
+\subsection{Colormap Reference}
+
+\begin{tabular}{ll}
+\toprule
+\textbf{Name} & \textbf{Description} \\
+\midrule
+jet & Rainbow colormap (blue to red) \\
+hot & Black to red to yellow to white \\
+cold & Cyan to blue to dark blue \\
+spectral & Full spectral range \\
+bone & Grayscale with blue tint \\
+copper & Black to copper \\
+pink & Grayscale with pink tint \\
+gray & Grayscale only \\
+\bottomrule
+\end{tabular}
+
+\end{document}

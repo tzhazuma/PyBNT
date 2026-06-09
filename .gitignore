@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+
+# Virtual environments
+venv/
+.env/
+.venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project specific
+checkpoints/
+*.ckpt
+*.h5
+*.hdf5
+
+# Data (large NIfTI, DICOM)
+*.nii
+*.nii.gz
+*.dcm
+!pybnt/data/templates/*.nv
+!pybnt/data/templates/*.node
+!pybnt/data/templates/*.edge
+
+# Tests
+.coverage
+htmlcov/
+.pytest_cache/
+
+# LaTeX
+docs/*.aux
+docs/*.log
+docs/*.out
+docs/*.toc
+!docs/*.pdf
