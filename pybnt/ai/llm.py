@@ -3,6 +3,8 @@
 import os
 from http import HTTPStatus
 
+from pybnt.core.logconf import logger
+
 
 def ask_llm(message: list[dict], api_key: str = "", model: str = "qwen-plus",
             stream: bool = False) -> str | None:
@@ -24,7 +26,7 @@ def ask_llm(message: list[dict], api_key: str = "", model: str = "qwen-plus",
     if response.status_code == HTTPStatus.OK:
         return response
     else:
-        print(f"Error: {response.status_code} - {response.message}")
+        logger.error(f"Error: {response.status_code} - {response.message}")
         return None
 
 

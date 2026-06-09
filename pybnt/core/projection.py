@@ -28,6 +28,7 @@ from typing import Optional, Union
 
 import numpy as np
 
+from pybnt.core.logconf import logger
 from pybnt.core.utils import dis, gaussian_dis
 
 # Type alias for 3D position
@@ -405,7 +406,7 @@ class Surfaces:
                 triangle.proj_value(float(np.sum(out)))
 
             else:
-                print(f"Unknown projection type: {proj_type!r}")
+                logger.warning(f"Unknown projection type: {proj_type!r}")
 
 
 # Backward-compatible aliases for old method names

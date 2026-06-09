@@ -3,6 +3,8 @@ import os
 import subprocess
 import sys
 
+from pybnt.core.logconf import logger
+
 
 def _get_elastix_path() -> str:
     """Get the path to the elastix binary directory.
@@ -78,7 +80,7 @@ def register_image(
             "registered_output",
         )
 
-    print("elastix registration started ...")
+    logger.info("elastix registration started ...")
     try:
         subprocess.run(
             [
@@ -110,7 +112,7 @@ def register_image(
                 f"No result image found in {output_path}"
             )
 
-    print(f"Registration complete. Result: {result_path}")
+    logger.info(f"Registration complete. Result: {result_path}")
     return result_path
 
 

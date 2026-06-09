@@ -25,6 +25,7 @@ import os
 
 import numpy as np
 
+from pybnt.core.logconf import logger
 from pybnt.core.utils import isint
 
 
@@ -86,14 +87,14 @@ def _parse_nv(path: str) -> tuple[np.ndarray, np.ndarray]:
             nodenum = int(line)
             break
 
-        print(f"Parsing Nodenums: {nodenum}")
-        print("Starting parsing nodes position")
+        logger.debug(f"Parsing Nodenums: {nodenum}")
+        logger.debug("Starting parsing nodes position")
 
         for i in range(nodenum):
             line = f.readline()
             if not line:
                 raise ValueError(f"Unexpected EOF at node {i}")
-            parts = line.strip().split(" ")
+            parts = line.strip().split()
             if len(parts) < 3:
                 raise ValueError(
                     f"Nodes data error at node {i}: expected x y z"
@@ -114,7 +115,7 @@ def _parse_nv(path: str) -> tuple[np.ndarray, np.ndarray]:
             line = f.readline()
             if not line:
                 raise ValueError(f"Unexpected EOF at triangle {i}")
-            parts = line.strip().split(" ")
+            parts = line.strip().split()
             if len(parts) < 3:
                 raise ValueError(
                     f"Triangle data error at triangle {i}: expected v1 v2 v3"

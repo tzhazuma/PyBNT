@@ -72,6 +72,12 @@ pybnt-gui = "pybnt.gui.app:main"
 [project.urls]
 Homepage = "https://github.com/tzhazuma/PyBNT"
 
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+]
+
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["pybnt*"]

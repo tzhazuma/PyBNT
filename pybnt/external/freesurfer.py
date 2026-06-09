@@ -3,6 +3,8 @@ import os
 import platform
 import subprocess
 
+from pybnt.core.logconf import logger
+
 
 def run_freesurfer(input_path: str, subject_id: str, output_dir: str,
                    freesurfer_home: str | None = None):
@@ -59,7 +61,7 @@ def download_freesurfer(target_dir: str = ".") -> str:
 
     system = platform.system()
     if system == "Windows":
-        print("FreeSurfer doesn't support Windows, please use WSL instead.")
+        logger.warning("FreeSurfer doesn't support Windows, please use WSL instead.")
         return freesurfer_dir
     elif system == "Linux":
         url = ("https://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/"
@@ -72,7 +74,7 @@ def download_freesurfer(target_dir: str = ".") -> str:
             url = ("https://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/"
                    "8.0.0-beta/freesurfer-macOS-darwin_arm64-8.0.0-beta.tar.gz")
     else:
-        print(f"Unsupported platform: {system}")
+        logger.warning(f"Unsupported platform: {system}")
         return freesurfer_dir
 
     tar_path = os.path.join(target_dir, "freesurfer.tar.gz")

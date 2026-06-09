@@ -9,6 +9,7 @@ from typing import Optional
 
 import numpy as np
 
+from pybnt.core.logconf import logger
 from pybnt.core.utils import isfloat
 
 
@@ -39,7 +40,7 @@ def parse_edge_file(
             numeric = [float(x) for x in data]
             outedges.append(numeric)
         except Exception:
-            print(f"Data error at {data}")
+            logger.warning(f"Data error at {data}")
             if mode == "continue":
                 continue
             else:
@@ -71,7 +72,7 @@ def make_edge_from_nodes(
     try:
         arr = np.zeros(size)
     except Exception:
-        print(f"shape error at size {size}")
+        logger.warning(f"shape error at size {size}")
         return None
 
     for pairnodes in pairnodesl:
@@ -79,16 +80,16 @@ def make_edge_from_nodes(
             try:
                 arr[pairnodes[0], pairnodes[1]] = 1
             except Exception:
-                print(f"nodes position error {pairnodes}")
+                logger.warning(f"nodes position error {pairnodes}")
                 return None
         else:
             try:
                 arr[pairnodes[0], pairnodes[1]] = pairnodes[2]
                 if not isfloat(pairnodes[2]):
-                    print(f"nodes value error at value {pairnodes[2]}")
+                    logger.warning(f"nodes value error at value {pairnodes[2]}")
                     return None
             except Exception:
-                print(f"nodes position error {pairnodes}")
+                logger.warning(f"nodes position error {pairnodes}")
                 return None
 
     result = arr.tolist()

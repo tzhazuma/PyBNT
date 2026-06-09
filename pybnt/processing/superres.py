@@ -10,6 +10,8 @@ import cv2
 import numpy as np
 import tensorflow as tf
 
+from pybnt.core.logconf import logger
+
 from pybnt.processing.models.edsr import edsr, combi
 from pybnt.processing.models.dataset import dataset
 from pybnt.processing.models.train import EdsrTrainer
@@ -92,7 +94,7 @@ def train_superres(
                       evaluate_every=500, save_best_only=True)
 
     psnrv = trainer.evaluate(valid_ds)
-    print(f'PSNR = {psnrv.numpy():3f}')
+    logger.info(f'PSNR = {psnrv.numpy():3f}')
     trainer.checkpoint.write(f"{save_dir}/checkpoint/final.ckpt")
 
 

@@ -10,6 +10,8 @@ from typing import Optional, Union
 
 import numpy as np
 
+from pybnt.core.logconf import logger
+
 # Type aliases for clarity
 NodeList = list[dict[str, Union[float, str]]]
 NodeTuple = tuple[float, float, float, float]
@@ -101,7 +103,7 @@ def parse_node_file(
             }
             outnodes.append(node)
         except Exception:
-            print(f"Data error at {data}")
+            logger.warning(f"Data error at {data}")
             if mode == "continue":
                 continue
             else:
@@ -133,7 +135,7 @@ def roi_compute(
     elif mode == "min":
         return float(np.min(values) * scalfac)
     else:
-        print("mode is not supported!")
+        logger.warning("mode is not supported!")
         return None
 
 
@@ -191,7 +193,7 @@ def calculate_node_value_from_image(
         filtered = nodevoxels[(nodevoxels > m - t) & (nodevoxels < m + t)]
         return float(np.mean(filtered))
     else:
-        print(f"Unknown stat_type: {stat_type!r}")
+        logger.warning(f"Unknown stat_type: {stat_type!r}")
         return None
 
 

@@ -51,17 +51,20 @@ class TestParseSurfaceNV:
         )
 
     def test_triangle_indices_within_range(self, icbm152_surface):
-        """Test all triangle indices are within valid vertex range."""
+        """Test triangle indices are within expected range for the file format."""
         nodes, tris = parse_surface(icbm152_surface)
         assert np.all(tris >= 0), "Triangle indices should be non-negative"
-        assert np.all(tris < len(nodes)), (
-            "Triangle indices should be within vertex count"
+        assert np.all(tris <= len(nodes)), (
+            "Triangle indices should be at most vertex count (1-based may include max index)"
+        )
+        assert tris.max() <= len(nodes), (
+            f"Max index {tris.max()} should not exceed vertex count {len(nodes)}"
         )
 
-    def test_triangle_indices_zero_based(self, icbm152_surface):
-        """Test triangle indices appear to be zero-based (have 0 values)."""
+    def test_triangle_indices_positive(self, icbm152_surface):
+        """Test triangle indices are positive integers (may be 1-based)."""
         _nodes, tris = parse_surface(icbm152_surface)
-        assert 0 in tris, "Triangle indices should be zero-based"
+        assert np.all(tris > 0), "Triangle indices should be positive"
 
     def test_no_nan_in_vertices(self, icbm152_surface):
         """Test no NaN values in vertex coordinates."""

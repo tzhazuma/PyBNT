@@ -11,6 +11,8 @@ import cv2
 import numpy as np
 import pymeshlab  # type: ignore[import-untyped]
 
+from pybnt.core.logconf import logger
+
 
 def isint(a: str) -> bool:
     """Return ``True`` if *a* can be parsed as an integer."""
@@ -142,7 +144,7 @@ def disort(
     elif distortion_type == "angle":
         return float(angle(v11, v22) / angle(v1, v2))
     else:
-        print("not support type!")
+        logger.warning("not support type!")
         return 0.0
 
 
@@ -197,5 +199,5 @@ def readimage(imagep: str) -> np.ndarray:
         return cv2.imread(imagep)
 
 
-# Backward-compatible alias for the old "len" name (now vec_len)
-len = vec_len
+# Backward-compatible alias (kept for compatibility but deprecated)
+# Do NOT use `len` as an alias - it shadows Python's builtin

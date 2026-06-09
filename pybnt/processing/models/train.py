@@ -7,6 +7,8 @@ from tensorflow.python.keras.optimizer_v2.learning_rate_schedule import (
     PiecewiseConstantDecay,
 )
 
+from pybnt.core.logconf import logger
+
 from pybnt.processing.models.common import evaluate
 
 
@@ -76,9 +78,9 @@ class Trainer:
                 loss_mean.reset_states()
 
                 psnr_value = self.evaluate(valid_dataset)
-                print(
-                    f'{step}/{steps}: loss = {loss_value.numpy():.3f}, '
-                    f'PSNR = {psnr_value.numpy():3f}'
+                logger.info(
+                    '%s/%s: loss = %.3f, PSNR = %3f',
+                    step, steps, loss_value.numpy(), psnr_value.numpy()
                 )
                 vis_list.append((step, loss_value, psnr_value))
 

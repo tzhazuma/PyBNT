@@ -28,6 +28,8 @@ from typing import Any
 
 import numpy as np
 
+from pybnt.core.logconf import logger
+
 __all__ = [
     "read_spm_volume",
     "write_spm_volume",
@@ -281,7 +283,7 @@ def run_spm_batch(
             timeout=timeout,
         )
         if result.returncode != 0:
-            print("MATLAB stderr:", result.stderr)
+            logger.error("MATLAB stderr: %s", result.stderr)
         return result.returncode == 0
 
     except subprocess.TimeoutExpired:

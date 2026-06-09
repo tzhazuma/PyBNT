@@ -5,6 +5,8 @@ import warnings
 
 import nibabel as nib
 import numpy as np
+
+from pybnt.core.logconf import logger
 from nilearn.connectome import ConnectivityMeasure
 from nilearn.input_data import NiftiSpheresMasker
 from nilearn.maskers import NiftiMasker
@@ -49,8 +51,8 @@ def _compute_correlation(fmri_filename: str, ratio: float = 1.0) -> np.ndarray:
     connectome_measure = ConnectivityMeasure(kind='correlation')
     correlation_matrix = connectome_measure.fit_transform([brain_time_series])[0]
 
-    print("Cor_matrix_shape", correlation_matrix.shape)
-    print(correlation_matrix)
+    logger.debug("Cor_matrix_shape %s", correlation_matrix.shape)
+    logger.debug("Correlation matrix:\n%s", correlation_matrix)
     return correlation_matrix
 
 

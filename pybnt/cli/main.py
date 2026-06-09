@@ -171,7 +171,9 @@ def volume(input_path, layout, colormap, output):
     from pybnt.core.surface import parse_surface
     import numpy as np
 
-    surface_path = "pybnt/data/templates/BrainMesh_ICBM152.nv"
+    from importlib import resources
+    import pybnt.data.templates as _templates
+    surface_path = str(resources.files(_templates) / "BrainMesh_ICBM152.nv")
     vertex_data = map_volume_to_surface(input_path, surface_path)
     nodes, tris = parse_surface(surface_path)
 

@@ -545,7 +545,27 @@ class Ui_MainWindow(QMainWindow):
         )
         if path:
             self.save_path = path
-            self.log(f"Screenshot will be saved to: {path}")
+            self.log(f"Screenshot saved to: {path}")
+            try:
+                from pybnt.visualization.plotter import draw_surface
+                surface = self.surface_path.text()
+                node = self.node_path.text()
+                if node:
+                    from pybnt.visualization.plotter import draw_nodes
+                    edge = self.edge_path.text()
+                    ax = draw_nodes(node, edge or None, surface or None, show=False)
+                elif surface:
+                    ax = draw_surface(surface, show=False)
+                else:
+                    self.log("No surface/node loaded. Using empty view.")
+                    import pyvista as pv
+                    ax = pv.Plotter()
+                    ax.background_color = "white"
+                ax.screenshot(path)
+                ax.close()
+                self.log(f"✅ Screenshot saved to {path}")
+            except Exception as e:
+                self.log(f"❌ Screenshot failed: {e}")
 
     def _show_about(self):
         """Show about dialog."""
